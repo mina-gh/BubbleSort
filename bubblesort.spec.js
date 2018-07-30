@@ -56,7 +56,7 @@ describe('Bubble Sort', function() {
       expect(Array.prototype.sort.calls.count()).toEqual(0);
     });
 
-    it('test case with random array size 10', function(){
+    it('test case with random array size 100', function(){
       let array = randomArray(100);
 
       bubbleSort(array);
