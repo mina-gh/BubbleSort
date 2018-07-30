@@ -1,3 +1,7 @@
 benchpress
 benchpress/*
+insertionsort.js
+quicksort.js
+heapsort.js
+radixsort.js
 
