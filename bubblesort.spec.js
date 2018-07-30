@@ -35,8 +35,6 @@ describe('Bubble Sort', function() {
         expect(Array.prototype.sort.calls.count()).toEqual(0);
     });
 
-
-
     it("testing a custom comparator function", function(){
       let array = [{ age: 4 }, { age: 8 }, { age: 2 }, { age: 9 }];
       let comparator = function (a, b) {
@@ -46,22 +44,37 @@ describe('Bubble Sort', function() {
       };
 
       expect(bubbleSort(array, comparator)).toEqual([{ age: 2 }, { age: 4 }, { age: 8 }, { age: 9 }]);
-        expect(Array.prototype.sort.calls.count()).toEqual(0);
-
-
+      expect(Array.prototype.sort.calls.count()).toEqual(0);
     });
 
-    /*it('', function(){
-      let array = randomArray();
-      spyOn(array, 'sort');
-      expect(array.sort).toHaveBeenCalledTimes(0);
+    it('test case with random array size 0', function(){
+      let array = randomArray(0);
 
-      for(let i = 0; i < array.length -2; i++){
-        // test a[i] <= a[i+1];
+      for(let i = 0; i < array.length - 2; i++){
+        expect(array[i] <= array[i + 1]).toEqual(true);
       }
+      expect(Array.prototype.sort.calls.count()).toEqual(0);
     });
+
+    it('test case with random array size 10', function(){
+      let array = randomArray(100);
+
+      bubbleSort(array);
+
+      for (let i = 0; i < array.length - 2; i++){
+        expect(array[i] <= array[i + 1]).toBe(true);
+      }
+      expect(Array.prototype.sort.calls.count()).toEqual(0);
+    });
+
 
     function randomArray(n){
-      //returns a random
-    }*/
+      // returns a random array of n elements.
+      let array = [];
+      while (n > 0){
+        array.push(Math.floor(Math.random() * 100));
+        n--;
+      }
+      return array;
+    }
 });
