@@ -11,6 +11,7 @@ describe('Bubble Sort', function() {
         let array = [10];
 
         expect(bubbleSort(array)).toEqual([10]);
+        expect(array.bubbleSort()).toEqual([10]);
         expect(Array.prototype.sort.calls.count()).toEqual(0);
     });
 
@@ -44,6 +45,7 @@ describe('Bubble Sort', function() {
       };
 
       expect(bubbleSort(array, comparator)).toEqual([{ age: 2 }, { age: 4 }, { age: 8 }, { age: 9 }]);
+      expect(array.bubbleSort(comparator)).toEqual([{ age: 2 }, { age: 4 }, { age: 8 }, { age: 9 }]);
       expect(Array.prototype.sort.calls.count()).toEqual(0);
     });
 
@@ -67,6 +69,16 @@ describe('Bubble Sort', function() {
       expect(Array.prototype.sort.calls.count()).toEqual(0);
     });
 
+    it('test a newly added function to Array.prototype', function(){
+      let array = randomArray(100);
+
+      array.bubbleSort();
+
+      for (let i = 0; i < array.length - 2; i++){
+        expect(array[i] <= array[i + 1]).toBe(true);
+      }
+      expect(Array.prototype.sort.calls.count()).toEqual(0);
+    });
 
     function randomArray(n){
       // returns a random array of n elements.

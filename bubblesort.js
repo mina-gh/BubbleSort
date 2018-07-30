@@ -18,3 +18,24 @@ function bubbleSort (arr, comp = '>') {
     }
     return arr;
 }
+
+Array.prototype.bubbleSort = function(comp = ">"){
+    if (this.length > 0) {
+        for (let i = this.length - 1; i > 0; i--) {
+            for (let j = 0; j < i; j++) {
+                if (comp !== '>' && typeof comp === 'function'){
+                    if (comp(this[j], this[j + 1]) === 1){
+                        let temp = this[j + 1];
+                        this[j + 1] = this[j];
+                        this[j] = temp;
+                    }
+                } else if (this[j] > this[j + 1]) {
+                    let temp = this[j + 1];
+                    this[j + 1] = this[j];
+                    this[j] = temp;
+                }
+            }
+        }
+    }
+    return this;
+}
