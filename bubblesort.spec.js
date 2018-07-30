@@ -35,5 +35,18 @@ describe('Bubble Sort', function(){
     expect(bubbleSort(array).toEquals(['a', 'a', 'c', 'd', 'h']));
   });
 
+  /*it('', function(){
+    let array = randomArray();
+    spyOn(array, 'sort');
+    expect(array.sort).toHaveBeenCalledTimes(0);
+
+    for(let i = 0; i < array.length -2; i++){
+      // test a[i] <= a[i+1];
+    }
+  });
+
+  function randomArray(n){
+    //returns a random
+  }*/
 });
 
